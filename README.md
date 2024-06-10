@@ -1,2 +1,2 @@
 # MySQL
-Databases
+My Structured Query Language
