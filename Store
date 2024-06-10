@@ -1,0 +1,71 @@
+create database Store;
+use store;
+drop database store;
+create table clients(
+clientId int not null,
+clientName varchar(25) not null, address varchar(30) not null,
+city varchar(25),
+country varchar(25)
+);
+
+create table products(
+productId int not null,
+productName varchar (25) not null,
+productPrice int not null,
+entryData date not null
+);
+
+alter table clients
+add column phoneNumber int not null;
+
+alter table clients
+drop column phoneNumber;
+
+alter table clients
+rename column city to town;
+
+alter table products
+add primary key(productID);
+
+alter table clients
+add constraint pk_idClient primary key(clientId, clientName);
+
+alter table products modify productId INT AUTO_INCREMENT;
+
+add constraint pk_idClient primary key(clientId, clientName);
+
+alter table produse modify productId INT AUTO_INCREMENT;
+
+
+create table orders(
+orderId int not null,
+clientId int not null,
+orderDate date not null,
+primary key (orderId),
+foreign key (clientId) references clients(clientId)
+);
+
+alter table products add foreign key (productPrice) references produse (productId);
+
+alter table orders
+modify column orderData char(30) not null;
+
+
+insert into sales (totalSales, storeLocation, productsStock) values ("1", "London", "30"); 
+select*from sales;
+
+truncate sales;
+
+
+create table sales(
+totalSales int not null,
+storeLocation varchar(20) not null,
+productsStock int not null
+);
+
+INSERT INTO clients (clientId, clientName, address, town, country) VALUES
+(1, 'Andrew', 'Str.1 May, Nr.11', 'Bucharest', 'Romania');
+INSERT INTO comenzi (orderId, clientId, orderData)
+    VALUES (100, 1, 17.12.2024');
+
+truncate orders;
